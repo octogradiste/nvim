@@ -16,5 +16,9 @@ rm "nvim-linux-$ARCH.tar.gz"
 
 echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$BASHRC"
 
+echo "Installing LazyVim dependencies..."
+export PATH="$PATH:$INSTALL_DIR/bin"
+nvim --headless "+Lazy! sync" "+qa"
+
 echo "Installation complete. Restart your shell or run 'source ~/.bashrc' to apply changes."
 
