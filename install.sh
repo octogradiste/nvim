@@ -11,7 +11,7 @@ BASHRC="$HOME/.bashrc"
 
 echo "Installing Neovim for $ARCH..."
 curl -LO "$NVIM_URL"
-sudo tar -C /opt -xzf "nvim-linux-$ARCH.tar.gz"
+tar -C /opt -xzf "nvim-linux-$ARCH.tar.gz"
 rm "nvim-linux-$ARCH.tar.gz"
 
 echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$BASHRC"
