@@ -7,6 +7,5 @@ return {
 			gitcommit = true,
 			markdown = true,
 		},
-		lsp_binary = "copilot-node-server",
 	},
 }
