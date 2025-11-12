@@ -8,6 +8,7 @@ return {
 			nix = { "nixfmt" },
 			python = { "ruff_format" },
 			typescript = { "prettierd" },
+			go = { "gofmt" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
