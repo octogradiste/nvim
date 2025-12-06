@@ -23,7 +23,7 @@ echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$BASHRC"
 
 echo "Installing LazyVim dependencies..."
 export PATH="$PATH:$INSTALL_DIR/bin"
-nvim --headless "+Lazy! sync" "+qa"
+nvim --headless "+Lazy! restore" "+qa"
 
 echo "Installation complete. Restart your shell or run 'source ~/.bashrc' to apply changes."
 
