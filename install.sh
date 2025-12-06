@@ -14,6 +14,11 @@ curl -LO "$NVIM_URL"
 tar -C /opt -xzf "nvim-linux-$ARCH.tar.gz"
 rm "nvim-linux-$ARCH.tar.gz"
 
+if [ ! -f "$BASHRC" ]; then
+    echo "Creating $BASHRC..."
+    touch "$BASHRC"
+fi
+
 echo "export PATH=\"\$PATH:$INSTALL_DIR/bin\"" >> "$BASHRC"
 
 echo "Installing LazyVim dependencies..."

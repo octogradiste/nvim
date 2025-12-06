@@ -21,6 +21,7 @@ return {
 
 		vim.lsp.enable({
 			"gopls",
+			"jdtls",
 			"lua_ls",
 			"nixd",
 			"openscad_lsp",
