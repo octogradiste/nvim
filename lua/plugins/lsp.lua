@@ -20,6 +20,7 @@ return {
 		})
 
 		vim.lsp.enable({
+			"clangd",
 			"gopls",
 			"jdtls",
 			"lua_ls",

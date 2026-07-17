@@ -2,13 +2,14 @@ return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
+			cpp = { "clang_format" },
 			dart = { "dart_format" },
+			go = { "gofmt" },
 			json = { "jq" },
 			lua = { "stylua" },
 			nix = { "nixfmt" },
 			python = { "ruff_format" },
 			typescript = { "prettierd" },
-			go = { "gofmt" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
