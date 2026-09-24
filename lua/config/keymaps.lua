@@ -3,39 +3,19 @@ local g = vim.g
 g.mapleader = " "
 g.maplocalleader = "\\"
 
-function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.keymap.set(mode, lhs, rhs, options)
-end
+local default_opts = { noremap = true, silent = true }
 
-map("n", "<c-s>", ":w<cr>")
-map("n", "<leader>qn", ":qa<cr>")
-map("n", "<leader>ef", ":Neotree toggle<cr>")
+vim.keymap.set("n", "<c-s>", ":w<cr>", default_opts)
+vim.keymap.set("n", "<leader>qn", ":qa<cr>", default_opts)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
-		local opts = { buffer = event.buf }
+		local lsp_opts = { buffer = event.buf }
 
-		map("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-		map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-		map("n", "<leader>re", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-		map({ "n", "x" }, "<leader>ft", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-		map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "Organize imports",
-	buffer = buffer,
-	callback = function()
-		vim.lsp.buf.code_action({
-			context = { only = { "source.organizeImports" } },
-			apply = true,
-		})
-		vim.wait(100)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, lsp_opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_opts)
+		vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, lsp_opts)
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, lsp_opts)
 	end,
 })
